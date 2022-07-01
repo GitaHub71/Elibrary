@@ -11,12 +11,12 @@ This elibrary is built using Laravel.
 
 ## About ELibrary
 
-ELibrary is simple library web application for administrator purposes. Features including search, sort, and filters. CRUD features included. An author can write many books, and a book can be write by mane authors. Using standard bootstrap template, I utilize every feature possible to make this website simple but functional.
+ELibrary is simple library web application for administrator purposes. Features including search, sort, and filters. CRUD features also included. An author can write many books, and a book can be writen by many authors. Using standard bootstrap template, I utilize every feature possible to make this website simple but functional.
 
-- Search can be done in every pages possible. To search through addressed table, go to any page where the table is indicated. 
+- Search can be done in every pages possible. To search through addressed table, go to any pages where the table is indicated. 
 - Sort can be done also when there's a request. Any multiple filters are possible.
 - Filters are available on the top left of the page.
-- Date filters included last 1 year, last 1 month, and last 7 days from current date.
+- Date filters included for last 1 year, last 1 month, and last 7 days from the current date.
 - Search also can be done for dates.
 - Dinamically add multiple authors when add/update books.
 
@@ -26,9 +26,9 @@ Any advices or modifications are welcomed.
 
 To add factory data:
 
-- All Database seeders are called in DatabaseSeeder.
-- Uncomment all seeder to add the stated amount of data.
-- If you want to add some customized amount, be aware that you have to input the max rng in the factories involved.
-- If you want to add some unreturned books in table loan, comment all seeder except loan, and comment 'date_return' in LoanFactory.
-- If you add customized amount of data, please check the max rng in every Factory and match the customized amount before you run the seeder.
-- And last before you run the application, add/edit a set of email-password with valid domain directly from the database. Use that to login to the application.
+- All Database seeders are called in 'DatabaseSeeder'.
+- Uncomment all seeders to add the stated amount of data.
+- If you want to add some customized amount, be aware that you also have to input the max rng with the custom amount in the factories involved.
+- If you want to add some unreturned books in table loan, comment all seeders except for loans, and comment 'date_return' in 'LoanFactory'.
+- If you add a custom amount of data, please check the max rng in every Factory and match with the custom amount before you run the seeder.
+- And last before you run the application, add/edit a set of email-password in the 'admins' table with a valid domain directly from the database. Use that to login to the application.
