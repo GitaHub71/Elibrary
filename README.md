@@ -22,7 +22,14 @@ ELibrary is simple library web application for administrator purposes. Features 
 
 Any advices or modifications are welcomed.  
 
-## Points to get started
+## Database
+
+If you want to add data from the database I prepared, import elibrary.sql
+
+- Login using valid email from table 'admins'
+- Use gita_suciana@gmail.com or freenando@gmail.com. With password 'password'.
+
+## Factories
 
 To add factory data:
 

@@ -6,8 +6,11 @@ use App\Models\Admin;
 use App\Models\Book;
 use App\Models\Loan;
 use App\Models\Member;
+use App\Rules\BookAvailable;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class LoanController extends Controller
 {
@@ -120,8 +123,14 @@ class LoanController extends Controller
         $validatedData = $request->validate([
             'member_id' => 'required',
             'borrow_date' => 'required',
-            'books.*' => 'required|distinct',
-            'due_date' => 'required'
+            'due_date' => 'required',
+            'books.*' => [ 'required' ,'distinct',
+                    Rule::forEach(function($attribute, $value, $fail){
+                        return [
+                            new BookAvailable($attribute, $value, $fail)
+                        ];
+                    })
+                ],
         ]);
 
         foreach ($validatedData['books'] as $book_id) {
@@ -132,6 +141,9 @@ class LoanController extends Controller
                 'date_borrow' => $validatedData['borrow_date'],
                 'due_date' => $validatedData['due_date']
             ]);
+            $book = Book::find($book_id);
+            $book->copies_left--;
+            $book->save();
         }
 
         // dd($loans);
@@ -196,6 +208,10 @@ class LoanController extends Controller
             }else{
                 $fines = 0;
             }
+            
+            $book = Book::find($request->book_id);
+            $book->copies_left++;
+            $book->save();
         }
 
         $validatedData['fines'] = $fines;
